@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#dbe7e5" />
+    <meta name="description" content="化身戴蓝围巾的小鸽子，在南京工业大学江浦校区的原创三维重建中自由飞行，发现值得去的地方。" />
+    <title>飞览南工大｜NJTech Flight</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><text y=%2252%22 font-size=%2252%22>🕊️</text></svg>" />
+  </head>
+  <body>
+    <main id="app">
+      <canvas id="world" aria-label="南京工业大学江浦校区三维飞行场景"></canvas>
+      <div id="loading" role="status">
+        <span class="loading-bird">◆</span>
+        <span>正在展开校园…</span>
+      </div>
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">NF</span>
+          <div>
+            <h1>飞览南工大</h1>
+            <p>NJTECH FLIGHT · 江浦校区</p>
+          </div>
+        </div>
+        <div class="top-actions">
+          <button id="quality" class="icon-button" type="button" aria-label="切换画质">画质 · 自动</button>
+          <button id="help-button" class="round-button" type="button" aria-label="查看飞行控制">?</button>
+        </div>
+      </header>
+      <aside class="place-panel" aria-label="校园地点导航">
+        <div class="panel-heading">
+          <span>去发现</span>
+          <span class="place-count">5 PLACES</span>
+        </div>
+        <div id="place-list"></div>
+      </aside>
+      <section class="flight-status" aria-label="飞行状态">
+        <div><span id="altitude">42</span><small>米 · 高度</small></div>
+        <span class="status-divider"></span>
+        <div><span id="speed">28</span><small>km/h · 速度</small></div>
+      </section>
+      <div class="compass" aria-hidden="true"><span>N</span><i id="compass-needle"></i></div>
+      <div class="flight-actions">
+        <button id="reset" type="button">↺ <span>回到起点</span></button>
+        <button id="explore" class="primary" type="button">自由飞行 <span>→</span></button>
+      </div>
+      <div id="control-hint" class="control-hint">拖动鼠标转向 · W/S 调速 · A/D 转向 · 空格/Shift 升降</div>
+      <div id="touch-controls" aria-label="触控飞行控制">
+        <div id="joystick" class="joystick"><div id="stick"></div></div>
+        <div class="altitude-controls">
+          <button id="ascend" type="button" aria-label="上升">↑</button>
+          <button id="descend" type="button" aria-label="下降">↓</button>
+        </div>
+      </div>
+      <div id="nearby" class="nearby" hidden>
+        <span id="nearby-name"></span>
+        <button id="open-nearby" type="button">查看地点卡</button>
+      </div>
+      <dialog id="place-dialog" class="place-dialog">
+        <button class="dialog-close" type="button" aria-label="关闭地点卡">×</button>
+        <div id="place-card"></div>
+      </dialog>
+      <dialog id="help-dialog" class="help-dialog">
+        <button class="dialog-close" type="button" aria-label="关闭控制说明">×</button>
+        <div class="help-content">
+          <p class="eyebrow">FLIGHT GUIDE</p>
+          <h2>像鸽子一样，自由一点。</h2>
+          <div class="help-grid">
+            <div><strong>拖动鼠标</strong><span>朝想去的方向转向</span></div>
+            <div><strong>W / S</strong><span>加速 / 减速</span></div>
+            <div><strong>A / D</strong><span>左转 / 右转</span></div>
+            <div><strong>空格 / Shift</strong><span>上升 / 下降</span></div>
+          </div>
+          <p>手机使用左侧摇杆转向，右侧按钮升降。点地点后的“飞到这里”即可自动抵达，随时接管即可取消自动飞行。</p>
+          <p class="data-note">本作品为基于 OpenStreetMap 的原创三维重建，不是实景扫描。建筑细部与入口如未核实，会在地点卡中明确标注。</p>
+        </div>
+      </dialog>
+      <footer class="attribution">原创重建 · 数据 © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap contributors</a></footer>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
